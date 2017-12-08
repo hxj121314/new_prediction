@@ -14,7 +14,7 @@ TOP = np.pi
 BOTTLE = -np.pi
 BOUNDVALUE = TOP - BOTTLE
 IND_NUM = 3
-AXISWEIGHT = [1.0, 5.0, 20.0]
+AXISWEIGHT = [1.0, 2.0, 10.0]
 
 ##########################################################MY_LOSS
 class Reduction(object):
@@ -215,19 +215,9 @@ def my_loss(
     labels = math_ops.to_float(labels)
     predictions.get_shape().assert_is_compatible_with(labels.get_shape())
     bound = tf.constant(np.asarray([BOUNDVALUE] * IND_NUM, 'float').tolist())
-    top = tf.constant(np.asarray([TOP] * IND_NUM, 'float').tolist())
-    pos_inf = tf.constant(np.asarray([99] * IND_NUM, 'float').tolist())
-    bottle = tf.constant(np.asarray([BOTTLE] * IND_NUM, 'float').tolist())
-    neg_inf = tf.constant(np.asarray([-99] * IND_NUM, 'float').tolist())
-
-    pre_v = predictions
-    top_v = pos_inf - pre_v
-    predictions1 = tf.where(tf.greater(top,pre_v),pre_v,top_v)
-    bottle_v = neg_inf - predictions1
-    predictions2 = tf.where(tf.greater(predictions1,bottle),predictions1,bottle_v)
-    v1 = tf.abs(predictions2-labels)
+    v1 = tf.abs(predictions-labels)
     v2 = tf.abs(bound - v1)
     axisweight = tf.constant(AXISWEIGHT)
-    losses = tf.where(tf.greater(v2,v1),v1, v2) * axisweight
+    losses = tf.where(tf.greater(v2,v1),tf.square(v1), tf.square(v2)) * axisweight
     return compute_weighted_loss(
         losses, weights, scope, loss_collection, reduction=reduction)

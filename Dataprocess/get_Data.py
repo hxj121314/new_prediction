@@ -24,9 +24,15 @@ def readfile(path):
 def getData(usrs_id,video_id):
     usrlist = FindDirList(filepath)
     data = np.zeros((1,6),dtype='float')
-    videolist = FindDirList(filepath + usrlist[usrs_id] + '/test0')
+    if 'test0' in FindDirList(filepath + usrlist[usrs_id]):
+        videopath = filepath + usrlist[usrs_id] + '/test0'
+        videolist = FindDirList(videopath)
+    elif 'test1' in FindDirList(filepath + usrlist[usrs_id]):
+        videopath = filepath + usrlist[usrs_id] + '/test1'
+        videolist = FindDirList(videopath)
+    print(filepath + usrlist[usrs_id] + '/test0/' + videodic[video_id] + '/')
     if videodic[video_id] in videolist:
-        localpath = filepath + usrlist[usrs_id] + '/test0/' + videodic[video_id] + '/'
+        localpath = videopath + '/' + videodic[video_id] + '/'
         data = np.vstack((data,readfile(localpath)))
     data = np.delete(data,0,axis=0)
     return data
