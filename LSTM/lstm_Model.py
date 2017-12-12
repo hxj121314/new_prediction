@@ -6,7 +6,7 @@ HIDDEN_SIZE = 512
 NUM_LAYERS = 3
 TIMESTEPS = 20
 PREDICTSTEPS = 5
-TRAINING_STEPS = 100000
+TRAINING_STEPS = 10000
 BATCH_SIZE = 32
 # TRAINING_EXAMPLES = 10000
 # TESTING_EXAMPLES = 1000
@@ -24,7 +24,7 @@ def lstm_model(X, y):
     output = output[:,-1]
     prediction, _ = tf.contrib.learn.models.linear_regression(output, y)
     prediction = np.pi*tf.nn.tanh(prediction)
-    loss = mean_squared_error(prediction, y)
+    loss = my_loss(prediction, y)
 
 
     train_op = tf.contrib.layers.optimize_loss(
