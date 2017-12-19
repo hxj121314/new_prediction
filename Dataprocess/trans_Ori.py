@@ -127,7 +127,7 @@ def Q2DCM(Q,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
             print ("Wrong number of elements")
             sys.exit(1)
     if Q.shape[1] != 4:
-        Q.shape=[Q.size/4,4]
+        Q.shape=[int(Q.size/4),4]
     if ~ignoreAllChk:
         if ichk and (abs(Q) > tol).any():
             print ("Warning: (At least one of the) Input quaternion(s) is not a unit vector\n")
@@ -140,7 +140,7 @@ def Q2DCM(Q,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
     if N==1:
         DCM = np.array(np.zeros(9)).reshape(3, 3);
     else:
-        DCM = 1.0 * np.array(range(9*N)).reshape(3, 3, N); # np.zeros(9*N)
+        DCM = 1.0 * np.array(range(16*N)).reshape(4, 4, N); # np.zeros(9*N)
     #if len(DCM.shape)==3:
     #    if DCM.shape==(3, 3, 1):
     #        DCM=DCM.reshape(3, 3)
@@ -164,15 +164,17 @@ def Q2DCM(Q,tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
         DCM[1,2] = 2*(Qn[0,2]*Qn[0,3]+Qn[0,0]*Qn[0,1])
         DCM[2,2] = 1-2*(Qn[0,1]*Qn[0,1]+Qn[0,2]*Qn[0,2])
     else:
-        DCM[:,0,0] = 1-2*(Qn[:,2]*Qn[:,2]+Qn[:,3]*Qn[:,3])
-        DCM[:,1,0] = 2*(Qn[:,1]*Qn[:,2]-Qn[:,0]*Qn[:,3])
-        DCM[:,2,0] = 2*(Qn[:,1]*Qn[:,3]+Qn[:,0]*Qn[:,2])
-        DCM[:,0,1] = 2*(Qn[:,1]*Qn[:,2]+Qn[:,0]*Qn[:,3])
-        DCM[:,1,1] = 1-2*(Qn[:,1]*Qn[:,1]+Qn[:,3]*Qn[:,3])
-        DCM[:,2,1] = 2*(Qn[:,2]*Qn[:,3]-Qn[:,0]*Qn[:,1])
-        DCM[:,0,2] = 2*(Qn[:,1]*Qn[:,3]-Qn[:,0]*Qn[:,2])
-        DCM[:,1,2] = 2*(Qn[:,2]*Qn[:,3]+Qn[:,0]*Qn[:,1])
-        DCM[:,2,2] = 1-2*(Qn[:,1]*Qn[:,1]+Qn[:,2]*Qn[:,2])
+        DCM[0, 0, :] = 1 - 2 * (Qn[:, 2] * Qn[:, 2] + Qn[:, 3] * Qn[:, 3])
+        DCM[1, 0, :] = 2 * (Qn[:, 1] * Qn[:, 2] - Qn[:, 0] * Qn[:, 3])
+        DCM[2, 0, :] = 2 * (Qn[:, 1] * Qn[:, 3] + Qn[:, 0] * Qn[:, 2])
+        DCM[0, 1, :] = 2 * (Qn[:, 1] * Qn[:, 2] + Qn[:, 0] * Qn[:, 3])
+        DCM[1, 1, :] = 1 - 2 * (Qn[:, 1] * Qn[:, 1] + Qn[:, 3] * Qn[:, 3])
+        DCM[2, 1, :] = 2 * (Qn[:, 2] * Qn[:, 3] - Qn[:, 0] * Qn[:, 1])
+        DCM[0, 2, :] = 2 * (Qn[:, 1] * Qn[:, 3] - Qn[:, 0] * Qn[:, 2])
+        DCM[1, 2, :] = 2 * (Qn[:, 2] * Qn[:, 3] + Qn[:, 0] * Qn[:, 1])
+        DCM[2, 2, :] = 1 - 2 * (Qn[:, 1] * Qn[:, 1] + Qn[:, 2] * Qn[:, 2])
+        DCM[3,0,:] = DCM[3,1,:] = DCM[3,2,:] = DCM[0,3,:] = DCM[1,3,:] = DCM[2,3,:] = 0
+        DCM[3,3,:] = 1
     return(DCM);
 
 ############################## DCM2Q

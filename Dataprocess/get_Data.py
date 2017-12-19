@@ -1,7 +1,7 @@
 import numpy as np
 import os
 
-filepath = './Database/'
+filepath = 'D:\Documents/new_prediction/Database/'
 videodic = ['Venise-s-AJRFQuAtE', 'Paris-sJxiPiAaB4k', 'Elephant-training-2bpICIClAIg', 'Diving-2OzlksZBTiA', 'Rollercoaster-8lsB-P8nGSM', 'Timelapse-CIw8R8thnm8']
 
 #方便读取数据
