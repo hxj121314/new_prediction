@@ -16,6 +16,7 @@ class Cluster(object):
         
     def get_points(self):
         return self.points
+
     
     def erase(self):
         self.points = []

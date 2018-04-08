@@ -4,7 +4,6 @@ import os
 filepath = 'D:\Documents/new_prediction/Database/'
 videodic = ['Venise-s-AJRFQuAtE', 'Paris-sJxiPiAaB4k', 'Elephant-training-2bpICIClAIg', 'Diving-2OzlksZBTiA', 'Rollercoaster-8lsB-P8nGSM', 'Timelapse-CIw8R8thnm8']
 
-#方便读取数据
 def FindDirList(path):
     list = []
     if (os.path.exists(path)):
@@ -37,3 +36,7 @@ def getData(usrs_id,video_id):
     data = np.delete(data,0,axis=0)
     return data
 
+
+# yybpath = 'E:/zz3_0.txt'
+# data = np.loadtxt(yybpath,skiprows=1)
+# print(data)

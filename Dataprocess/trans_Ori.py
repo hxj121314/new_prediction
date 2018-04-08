@@ -461,7 +461,8 @@ def Q2EA(Q,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=F
         if ichk and (abs(np.sqrt(np.power(Q,2).sum(axis=1) - 1)) > tol).any():
             print("Warning: (At least one of the) Input quaternion(s) is not a unit vector")
     if EulerOrder=="zyx":
-        EA = np.c_[np.arctan2((2*(Q[:,1]*Q[:,2] + Q[:,0]*Q[:,3])),(np.power(Q[:,0],2) + np.power(Q[:,1],2) - np.power(Q[:,2],2) - np.power(Q[:,3],2))), np.arctan2(-(2*(Q[:,1]*Q[:,3] - Q[:,0]*Q[:,2])),np.sqrt(1-np.power(2*(Q[:,1]*Q[:,3] - Q[:,0]*Q[:,2]),2))),np.arctan2((2*(Q[:,2]*Q[:,3] + Q[:,0]*Q[:,1])),(np.power(Q[:,0],2) - np.power(Q[:,1],2) - np.power(Q[:,2],2) + np.power(Q[:,3],2)))]
+        EA = np.c_[np.arctan2(2*(Q[:,0]*Q[:,1]+Q[:,2]*Q[:,3]),1-2*(np.power(Q[:,1],2)+np.power(Q[:,2],2))),np.arcsin(2*(Q[:,0]*Q[:,2]-Q[:,3]*Q[:,1])),np.arctan2(2*(Q[:,0]*Q[:,3]+Q[:,2]*Q[:,1]),1-2*(np.power(Q[:,3],2)+np.power(Q[:,2],2)))]
+        # EA = np.c_[np.arctan2((2*(Q[:,1]*Q[:,2] + Q[:,0]*Q[:,3])),(np.power(Q[:,0],2) + np.power(Q[:,1],2) - np.power(Q[:,2],2) - np.power(Q[:,3],2))), np.arctan2(-(2*(Q[:,1]*Q[:,3] - Q[:,0]*Q[:,2])),np.sqrt(1-np.power(2*(Q[:,1]*Q[:,3] - Q[:,0]*Q[:,2]),2))),np.arctan2((2*(Q[:,2]*Q[:,3] + Q[:,0]*Q[:,1])),(np.power(Q[:,0],2) - np.power(Q[:,1],2) - np.power(Q[:,2],2) + np.power(Q[:,3],2)))]
     elif EulerOrder=="yxz":
         EA = np.c_[np.arctan2(2*(Q[:,1]*Q[:,3] + Q[:,0]*Q[:,2]), 1-2*(np.power(Q[:,1],2) + np.power(Q[:,2],2))), np.arctan2(-(2*(Q[:,2]*Q[:,3] - Q[:,0]*Q[:,1])),np.sqrt(1-np.power(2*(Q[:,2]*Q[:,3] - Q[:,0]*Q[:,1]),2))),np.arctan2((2*(Q[:,1]*Q[:,2] + Q[:,0]*Q[:,3])),(np.power(Q[:,0],2) - np.power(Q[:,1],2) + np.power(Q[:,2],2)- np.power(Q[:,3],2)))]
     elif EulerOrder=="xzy":
