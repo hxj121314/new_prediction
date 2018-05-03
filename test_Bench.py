@@ -45,7 +45,8 @@ def main(video_id,ind,train_usrs,test_usrs):
     print(acu,'Acu')
     print(mean,'Mean')
 
-    plt.show()
+    #plt.show()
+    plt.savefig('/home/hxj/new_prediction/fig.png')
 
 # ind = [2,3,4,5]
 # print(getData(11, 0))

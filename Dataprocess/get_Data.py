@@ -2,7 +2,7 @@
 import numpy as np
 import os
 
-filepath = 'D:\Documents/new_prediction/Database/'
+filepath = '/home/hxj/new_prediction/Database/'
 videodic = ['Venise-s-AJRFQuAtE', 'Paris-sJxiPiAaB4k', 'Elephant-training-2bpICIClAIg', 'Diving-2OzlksZBTiA', 'Rollercoaster-8lsB-P8nGSM', 'Timelapse-CIw8R8thnm8']
 
 def FindDirList(path):
