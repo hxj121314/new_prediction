@@ -36,10 +36,9 @@ def main(video_id,ind,train_usrs,test_usrs):
         predicted.append(pred)
     predicted = np.array(predicted, dtype=np.float32)
 
-
-    plt.subplot(1,2,1)
+    plt.subplot(121)
     plt.plot(test_y)
-    plt.subplot(1,2,2)
+    plt.subplot(122)
     plt.plot(predicted)
     acu, mean = dif_Ang(predicted, test_y)
     print(acu,'Acu')
