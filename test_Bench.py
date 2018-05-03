@@ -1,3 +1,5 @@
+import matplotlib
+matplotlib.use('Agg')
 from matplotlib import pyplot as plt
 from Dataprocess.get_Data import *
 from LSTM.lstm_Model import *
