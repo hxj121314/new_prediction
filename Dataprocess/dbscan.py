@@ -16,20 +16,22 @@ DIM = 3
 # X, labels_true = make_blobs(n_samples=750, centers=centers, cluster_std=0.4,
 #                             random_state=0)
 # X = StandardScaler().fit_transform(X)
+Video_Id = 4
 ind = [1,2,3,4,5]
-fram_ind_start = 11
-fram_ind_end = 20
+iii = 2
+fram_ind_start = 11+50*iii
+fram_ind_end = 20+50*iii
 for i in range(50):
     if i == 0:
-        this_ind_start = np.where(getData(i, 0)[:,1]==fram_ind_start)[0][0]
-        this_ind_end = np.where(getData(i, 0)[:, 1] == fram_ind_end)[0][0]
-        read_Data = getData(i, 0)[this_ind_start:this_ind_end, ind]
+        this_ind_start = np.where(getData(i, Video_Id)[:,1]==fram_ind_start)[0][0]
+        this_ind_end = np.where(getData(i, Video_Id)[:, 1] == fram_ind_end)[0][0]
+        read_Data = getData(i, Video_Id)[this_ind_start:this_ind_end, ind]
         test_Data = np.hstack((read_Data[:,[0]], Qua2Eul(read_Data[:,[1,2,3,4]])))
     else:
-        this_ind_start = np.where(getData(i, 0)[:, 1] == fram_ind_start)[0][0]
-        this_ind_end = np.where(getData(i, 0)[:, 1] == fram_ind_end)[0][0]
-        read_Data_new = getData(i, 0)[this_ind_start:this_ind_end, ind]
-        test_Data_new = np.hstack((read_Data_new[:, [0]], Qua2Eul(read_Data_new[:, [1, 2, 3, 4]])))
+        this_ind_start = np.where(getData(i, Video_Id)[:, 1] == fram_ind_start)[0][0]
+        this_ind_end = np.where(getData(i, Video_Id)[:, 1] == fram_ind_end)[0][0]
+        read_Data_new = getData(i, Video_Id)[this_ind_start:this_ind_end, ind]
+        test_Data_new = np.hstack((read_Data_new[:, [0]], Qua2Eul(read_Data_new[:, [1, 2,  3, 4]])))
         test_Data = np.vstack((test_Data,test_Data_new))
 X = test_Data[:,[1,2,3]]
 np.savetxt('E:\\viewframe.csv',test_Data,delimiter=',')

@@ -14,18 +14,18 @@ def generate_data(seq):
         y.append(seq[:,i + TIMESTEPS + PREDICTSTEPS])
     return np.array(X, dtype=np.float32), np.array(y, dtype=np.float32)
 
-def main(ind,train_usrs,test_usrs):
-    train_Data = Qua2Eul(getData(train_usrs[0], 0)[:, ind]).transpose(1, 0)
+def main(video_id,ind,train_usrs,test_usrs):
+    train_Data = Qua2Eul(getData(train_usrs[0], video_id)[:, ind]).transpose(1, 0)
     train_X, train_y = generate_data(train_Data)
     for i in train_usrs[1:-1]:
-        train_Data_add = Qua2Eul(getData(i, 0)[:, ind]).transpose(1, 0)
+        train_Data_add = Qua2Eul(getData(i, video_id)[:, ind]).transpose(1, 0)
         train_X_add, train_y_add = generate_data(train_Data_add)
         train_X = np.vstack((train_X,train_X_add))
         train_y = np.vstack((train_y,train_y_add))
-    test_Data = Qua2Eul(getData(test_usrs[0], 0)[:, ind]).transpose(1, 0)
+    test_Data = Qua2Eul(getData(test_usrs[0], video_id)[:, ind]).transpose(1, 0)
     test_X, test_y = generate_data(test_Data)
     for j in test_usrs[1:-1]:
-        test_Data_add = Qua2Eul(getData(j, 0)[:, ind]).transpose(1, 0)
+        test_Data_add = Qua2Eul(getData(j, video_id)[:, ind]).transpose(1, 0)
         test_X_add, test_y_add = generate_data(test_Data_add)
         test_X = np.vstack((test_X,test_X_add))
         test_y = np.vstack((test_y,test_y_add))
@@ -61,4 +61,4 @@ def main(ind,train_usrs,test_usrs):
 # plt.show()
 # print(test_y)
 # acu, mean = dif_Ang(test_y, test_y)
-main([2,3,4,5],np.arange(0,49,1),np.arange(50,59,1))
+main(2,[2,3,4,5],np.arange(0,49,1),np.arange(50,59,1))

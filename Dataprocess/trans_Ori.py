@@ -491,32 +491,32 @@ def Q2EA(Q,EulerOrder="zyx",tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=F
     #EA = EA * (180/pi) # (Nx3) Euler angles in degrees
     theta  = EA[:,1]       # (Nx1) Angle THETA in degrees
     # Check EA
-    if ignoreAllChk==False:
-        if isinstance(EA, complex):
-            print("Unreal\nUnreal Euler EA. Input resides too close to singularity.\nPlease choose different EA type.")
-            sys.exit(1)
-        # Type 1 rotation (rotations about three distinct axes)
-        # THETA is computed using ASIN and ranges from -90 to 90 degrees
-
-    if ignoreAllChk==False:
-        if EulerOrder[0] != EulerOrder[2]:
-            singularities = np.abs(theta) > 89.9*(np.pi/180) # (Nx1) Logical index
-            singularities[np.where(np.isnan(singularities))] = False
-            if len(singularities)>0:
-                if (singularities).any():
-                    firstsing = np.where(singularities)[0] #which(singularities)[1] # (1x1)
-                    print("Input rotation ", firstsing, " resides too close to Type 1 Euler singularity.\nType 1 Euler singularity occurs when second angle is -90 or 90 degrees.\nPlease choose different EA type.")
-                    sys.exit(1)
-        else:
-            # Type 2 rotation (1st and 3rd rotation about same axis)
-            # THETA is computed using ACOS and ranges from 0 to 180 degrees
-            singularities = (theta<0.1*(np.pi/180)) | (theta>179.9*(np.pi/180)) # (Nx1) Logical index
-            singularities[np.where(np.isnan(singularities))] = False
-            if (len(singularities)>0):
-                if((singularities).any()):
-                    firstsing = np.where(singularities)[0] # (1x1)
-                    print("Input rotation ", firstsing, " resides too close to Type 2 Euler singularity.\nType 2 Euler singularity occurs when second angle is 0 or 180 degrees.\nPlease choose different EA type.")
-                    sys.exit(1)
+    # if ignoreAllChk==False:
+    #     if isinstance(EA, complex):
+    #         print("Unreal\nUnreal Euler EA. Input resides too close to singularity.\nPlease choose different EA type.")
+    #         sys.exit(1)
+    #     # Type 1 rotation (rotations about three distinct axes)
+    #     # THETA is computed using ASIN and ranges from -90 to 90 degrees
+    #
+    # if ignoreAllChk==False:
+    #     if EulerOrder[0] != EulerOrder[2]:
+    #         singularities = np.abs(theta) > 89.9*(np.pi/180) # (Nx1) Logical index
+    #         singularities[np.where(np.isnan(singularities))] = False
+    #         if len(singularities)>0:
+    #             if (singularities).any():
+    #                 firstsing = np.where(singularities)[0] #which(singularities)[1] # (1x1)
+    #                 print("Input rotation ", firstsing, " resides too close to Type 1 Euler singularity.\nType 1 Euler singularity occurs when second angle is -90 or 90 degrees.\nPlease choose different EA type.")
+    #                 sys.exit(1)
+    #     else:
+    #         # Type 2 rotation (1st and 3rd rotation about same axis)
+    #         # THETA is computed using ACOS and ranges from 0 to 180 degrees
+    #         singularities = (theta<0.1*(np.pi/180)) | (theta>179.9*(np.pi/180)) # (Nx1) Logical index
+    #         singularities[np.where(np.isnan(singularities))] = False
+    #         if (len(singularities)>0):
+    #             if((singularities).any()):
+    #                 firstsing = np.where(singularities)[0] # (1x1)
+    #                 print("Input rotation ", firstsing, " resides too close to Type 2 Euler singularity.\nType 2 Euler singularity occurs when second angle is 0 or 180 degrees.\nPlease choose different EA type.")
+    #                 sys.exit(1)
     return(EA)
 
 def DCM2EA(DCM, EulerOrder="zyx", tol = 10 * np.spacing(1), ichk=False, ignoreAllChk=False):
