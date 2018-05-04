@@ -214,7 +214,7 @@ def my_loss(
     predictions = math_ops.to_float(predictions)
     labels = math_ops.to_float(labels)
     predictions.get_shape().assert_is_compatible_with(labels.get_shape())
-    bound = tf.constant(np.asarray(BOUNDVALUE, 'float').tolist())
+    bound = tf.constant(np.asarray([np.pi,np.pi,2*np.pi], 'float').tolist())
     v1 = tf.abs(predictions-labels)
     v2 = tf.abs(bound - v1)
     axisweight = tf.constant(AXISWEIGHT)

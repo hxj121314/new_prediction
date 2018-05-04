@@ -9,7 +9,7 @@ import numpy as np
 from Dataprocess.trans_Data import *
 from Dataprocess.get_Data import *
 
-DIM = 3
+# DIM = 3
 
 #生成随机数据
 # centers = [[1, 1, 1], [-1, -1, -1], [1, -1, 0]]
@@ -31,4 +31,10 @@ DIM = 3
 # s = np.array([1,3,4,5])
 # this_ind = np.where(s == 6)[0]
 # print(this_ind.shape[0])
-print(np.max([10,15]))
+# print(np.max([10,15]))
+
+A = [np.pi] * 3
+B = [np.pi,np.pi,np.pi]
+
+print(A==B)
+print(B)
