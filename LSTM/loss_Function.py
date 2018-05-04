@@ -15,9 +15,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 TOP = np.pi
 BOTTLE = -np.pi
-BOUNDVALUE = [np.pi,np.pi,2*np.pi]
+BOUNDVALUE = [2*np.pi,2*np.pi,2*np.pi]
 IND_NUM = 3
-AXISWEIGHT = [10.0, 2.0, 1.0]
+AXISWEIGHT = [1.0, 2.0, 10.0]
 
 ##########################################################MY_LOSS
 class Reduction(object):
