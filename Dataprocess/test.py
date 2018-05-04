@@ -33,8 +33,8 @@ from Dataprocess.get_Data import *
 # print(this_ind.shape[0])
 # print(np.max([10,15]))
 
-A = np.asarray([np.pi] * 3,'float')
-B = np.asarray([np.pi,np.pi,2*np.pi],'float')
 
-print(A)
+A = np.array([12,4,3,0,2])
+B = A >1
+B = np.sum(B)/len(B)
 print(B)

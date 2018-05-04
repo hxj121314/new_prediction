@@ -9,7 +9,7 @@ def dif_Ang(prediction, label):
     differ = np.where(np.greater(diff1,diff2),diff2,diff1)
     ang_Thr = np.pi*(ANGLETHRESH/180.0)
     acu_Rate = (differ[:,0] < ang_Thr) & (differ[:,1] < ang_Thr) & (differ[:,2] < ang_Thr)
-    acu_Rate = np.sum(acu_Rate)/len(acu_Rate)
+    acu_Rate = float(np.sum(acu_Rate))/len(acu_Rate)
     mean_Error = np.zeros([3,1],dtype=np.float)
     mean_Error[0] = differ[:,0].mean()
     mean_Error[1] = differ[:,1].mean()
