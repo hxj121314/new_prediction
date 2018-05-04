@@ -1,6 +1,6 @@
 from LSTM.loss_Function import *
 import os
-os.environ['CUDA_DEVICES_VISIBAL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 LEARNINGRATING = 0.01
 HIDDEN_SIZE = 512

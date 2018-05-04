@@ -10,7 +10,7 @@ from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import weights_broadcast_ops
 from tensorflow.python.ops.losses import util
 import os
-os.environ['CUDA_DEVICES_VISIBAL'] = '3'
+os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 
 TOP = np.pi
