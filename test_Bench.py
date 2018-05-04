@@ -5,7 +5,8 @@ from Dataprocess.get_Data import *
 from LSTM.lstm_Model import *
 from Dataprocess.trans_Data import *
 from result_Evaulation import *
-
+import os
+os.environ['CUDA_DEVICES_VISIBAL'] = '3'
 
 
 def generate_data(seq):

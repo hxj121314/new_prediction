@@ -9,6 +9,9 @@ from tensorflow.python.ops import nn
 from tensorflow.python.ops import nn_ops
 from tensorflow.python.ops import weights_broadcast_ops
 from tensorflow.python.ops.losses import util
+import os
+os.environ['CUDA_DEVICES_VISIBAL'] = '3'
+
 
 TOP = np.pi
 BOTTLE = -np.pi
