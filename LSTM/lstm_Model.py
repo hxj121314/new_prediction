@@ -24,7 +24,7 @@ def lstm_model(X, y):
     output = output[:,-1]
     prediction, _ = tf.contrib.learn.models.linear_regression(output, y)
     prediction = np.pi*tf.nn.tanh(prediction)
-    loss = my_loss(prediction, y)
+    loss = mean_squared_error(prediction, y)
 
 
     train_op = tf.contrib.layers.optimize_loss(
