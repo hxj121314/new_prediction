@@ -12,9 +12,9 @@ from tensorflow.python.ops.losses import util
 
 TOP = np.pi
 BOTTLE = -np.pi
-BOUNDVALUE = [np.pi,np.pi,2*np.pi]
+BOUNDVALUE = TOP - BOTTLE
 IND_NUM = 3
-AXISWEIGHT = [10.0, 2.0, 1.0]
+AXISWEIGHT = [1.0, 2.0, 10.0]
 
 ##########################################################MY_LOSS
 class Reduction(object):
@@ -214,7 +214,7 @@ def my_loss(
     predictions = math_ops.to_float(predictions)
     labels = math_ops.to_float(labels)
     predictions.get_shape().assert_is_compatible_with(labels.get_shape())
-    bound = tf.constant([np.pi, np.pi, 2*np.pi])
+    bound = tf.constant(np.asarray([2*np.pi] * 3, 'float').tolist())
     v1 = tf.abs(predictions-labels)
     v2 = tf.abs(bound - v1)
     axisweight = tf.constant(AXISWEIGHT)
