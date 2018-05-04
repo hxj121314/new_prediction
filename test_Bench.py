@@ -64,4 +64,4 @@ def main(video_id,ind,train_usrs,test_usrs):
 # plt.show()
 # print(test_y)
 # acu, mean = dif_Ang(test_y, test_y)
-main(0,[2,3,4,5],np.arange(0,30,1),np.arange(30,35,1))
+main(0,[2,3,4,5],np.arange(0,50,1),np.arange(50,55,1))
