@@ -13,7 +13,7 @@
     <splitter split-orientation="horizontal" split-proportion="0.5">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="test_Bench.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="test_Bench.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/test_Bench.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="207">
@@ -35,11 +35,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="loss_Function.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="loss_Function.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/LSTM/loss_Function.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="276">
-                  <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
+                <state relative-caret-position="391">
+                  <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -169,9 +169,9 @@
         <option value="$PROJECT_DIR$/Dataprocess/GMM_model_Dic.py" />
         <option value="$PROJECT_DIR$/Dataprocess/get_Data.py" />
         <option value="$PROJECT_DIR$/Dataprocess/test.py" />
-        <option value="$PROJECT_DIR$/LSTM/loss_Function.py" />
         <option value="$PROJECT_DIR$/LSTM/lstm_Model.py" />
         <option value="$PROJECT_DIR$/test_Bench.py" />
+        <option value="$PROJECT_DIR$/LSTM/loss_Function.py" />
       </list>
     </option>
   </component>
@@ -722,13 +722,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LSTM/loss_Function.py">
+    <entry file="file://$PROJECT_DIR$/test_Bench.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="32" selection-end-line="12" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="207">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -742,11 +740,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test_Bench.py">
+    <entry file="file://$PROJECT_DIR$/LSTM/loss_Function.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="391">
+          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
