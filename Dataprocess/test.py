@@ -33,8 +33,8 @@ from Dataprocess.get_Data import *
 # print(this_ind.shape[0])
 # print(np.max([10,15]))
 
-A = [np.pi] * 3
-B = [np.pi,np.pi,np.pi]
+A = np.asarray([np.pi] * 3,'float')
+B = np.asarray([np.pi,np.pi,2*np.pi],'float')
 
-print(A==B)
+print(A)
 print(B)
