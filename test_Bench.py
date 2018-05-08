@@ -32,6 +32,10 @@ def main(video_id,ind,train_usrs,test_usrs):
         test_X_add, test_y_add = generate_data(test_Data_add)
         test_X = np.vstack((test_X,test_X_add))
         test_y = np.vstack((test_y,test_y_add))
+    test_X = np.pi * test_X
+    test_y = np.pi * test_y
+    train_X = np.pi * train_X
+    train_y = np.pi * train_y
     regressor = tf.contrib.learn.Estimator(model_fn=lstm_model)
     regressor.fit(train_X, train_y, batch_size=BATCH_SIZE, steps=TRAINING_STEPS)
     predicted = []

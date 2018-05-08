@@ -15,7 +15,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = '3'
 
 TOP = np.pi
 BOTTLE = -np.pi
-BOUNDVALUE = [2*np.pi,2*np.pi,2*np.pi]
+BOUNDVALUE = [360,360,360]
 IND_NUM = 3
 AXISWEIGHT = [1.0, 2.0, 10.0]
 

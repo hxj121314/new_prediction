@@ -5,9 +5,9 @@ ANGLETHRESH = 5
 
 def dif_Ang(prediction, label):
     diff1 = abs(prediction-label)
-    diff2 = 2.0*np.pi - diff1
+    diff2 = 360 - diff1
     differ = np.where(np.greater(diff1,diff2),diff2,diff1)
-    ang_Thr = np.pi*(ANGLETHRESH/180.0)
+    ang_Thr = ANGLETHRESH
     acu_Rate = (differ[:,0] < ang_Thr) & (differ[:,1] < ang_Thr) & (differ[:,2] < ang_Thr)
     acu_Rate = float(np.sum(acu_Rate))/len(acu_Rate)
     mean_Error = np.zeros([3,1],dtype=np.float)

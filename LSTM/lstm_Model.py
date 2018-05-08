@@ -24,8 +24,8 @@ def lstm_model(X, y):
     output, _ = tf.nn.dynamic_rnn(cell, x_, dtype=tf.float32)
     output = output[:,-1]
     prediction, _ = tf.contrib.learn.models.linear_regression(output, y)
-    prediction = np.pi*tf.nn.tanh(prediction)
-    loss = my_loss(prediction, y)
+    prediction = 180 * tf.nn.tanh(prediction)
+    loss = mean_squared_error(prediction, y)
 
 
     train_op = tf.contrib.layers.optimize_loss(
